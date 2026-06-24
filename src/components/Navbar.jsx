@@ -1,11 +1,9 @@
 import { useState } from "react"
 
-
-
 function Navbar() {
 const [isOpen , setIsOpen] = useState(false)
     return (
-      <nav className="bg-indigo-700 border-b border-indigo-500">
+      <nav className="bg-indigo-700 border-b border-indigo-500 ">
       <div className="flex justify-between items-center py-5 px-6 md:px-20">
         <div className="flex gap-4 items-center">
           <img src="/logo.png" className="w-10" alt="React Jobs Logo" />
