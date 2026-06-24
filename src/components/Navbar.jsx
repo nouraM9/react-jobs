@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useState } from "react"
 
 function Navbar() {
@@ -12,13 +13,13 @@ const [isOpen , setIsOpen] = useState(false)
 
         <ul className="hidden md:flex gap-10 text-white items-center">
           <li className="bg-black px-3 py-2 rounded">
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">Jobs</a>
+            <Link to="/jobs">Jobs</Link>
           </li>
           <li>
-            <a href="#">Add Job</a>
+            <Link to="/add-job">Add Job</Link>
           </li>
         </ul>
 
