@@ -2,12 +2,13 @@ import Hero from '../components/Hero'
 import HomeCards from '../components/HomeCards'
 import JobListings from '../components/JobListings'
 import ViewAllJobs from '../components/ViewAllJobs'
-function HomePage() {
+
+function HomePage({isHome}) {
   return (
     <>
     <Hero/>
     <HomeCards />
-    <JobListings isHome={true}/>
+    <JobListings isHome={isHome}/>
     <ViewAllJobs/>
     
     </>
