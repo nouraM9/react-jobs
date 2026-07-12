@@ -1,8 +1,20 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useLoaderData} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {toast} from 'react-toastify';
 
-function SingleJob() {
+function SingleJob({deleteJobSubmit}) {
+  const navigate = useNavigate();
     const job = useLoaderData();
+
+    const onDeleteClick = (jobId)=> {
+      const Confirm = window.confirm('Are you Sure you want to delete this job listing?');
+      if(!Confirm)return;
+
+      deleteJobSubmit(jobId);
+      toast.success('Job Deleted Successfuly');
+       return navigate('/jobs');
+    }
     
   return (
     <>
@@ -83,7 +95,7 @@ function SingleJob() {
                 className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job
                 </Link>
-              <button
+              <button onClick={()=> onDeleteClick(job.id)}
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
               >
                 Delete Job
@@ -103,7 +115,7 @@ function SingleJob() {
 const jobLoader = async({params})=>{
     const res = await fetch(`/api/jobs/${params.id}`);
     const data = await res.json();
-    console.log(data)
+    // console.log(data)
     return data;
 };
 
